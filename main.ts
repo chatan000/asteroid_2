@@ -20,6 +20,15 @@ function hero () {
     Hero.setPosition(78, 97)
     controller.moveSprite(Hero, 100, 10)
 }
+function score () {
+    info.changeScoreBy(1)
+}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    overlap()
+})
+function overlap () {
+    game.over(false)
+}
 function projectile () {
     projectile2 = sprites.createProjectileFromSide(img`
 . . . . . . . . . . . . . . . . 
@@ -40,15 +49,6 @@ function projectile () {
 . . . . . . . . . . . . . . . . 
 `, 0, 0)
 }
-function overlap () {
-    game.over(false)
-}
-function score () {
-    info.changeScoreBy(1)
-}
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    overlap()
-})
 let projectile2: Sprite = null
 let Hero: Sprite = null
 hero()
